@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import FakeUser from '../../FakeUser/FakeUser';
+import Address from '../Address/Address';
 
-class User extends Component {
-    render() {
-        console.log(FakeUser);
-        
-        return (
-            <div>
-                <h3>this is user</h3>
-            </div>
-        );
-    }
-}
+const User = () => {
+    const [users,setUsers] = useState(FakeUser);
+    console.log(users);
+    
+    return (
+        <div>
+            <h3>this user</h3>
+            <h3>{users.length}</h3>
+            {
+                users.map(user =><Address user={user}></Address>)
+            }
+        </div>
+    );
+};
 
 export default User;
